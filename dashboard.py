@@ -915,7 +915,6 @@ st.markdown("""
             </div>
         </div>
     </div>
-
     <div class="model-box">
         <div class="model-box-title">🤖 Model: Isolation Forest</div>
         <div class="model-box-text">
