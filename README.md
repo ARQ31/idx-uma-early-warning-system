@@ -235,7 +235,6 @@ Some improvements that can be added in the future:
 * Add anomaly ranking for all stocks
 * Add model evaluation using historical UMA events
 * Add automatic daily data update
-* Deploy the dashboard to Streamlit Cloud
 
 ## Author
 
