@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 # =========================
 st.set_page_config(
     page_title="IDX UMA Early Warning System",
-    page_icon="📊",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -465,13 +465,13 @@ df = load_data()
 with st.sidebar:
     st.markdown("""
     <div class="sidebar-brand">
-        <div class="sidebar-brand-icon">📊</div>
+        <div class="sidebar-brand-icon"></div>
         <div class="sidebar-brand-name">IDX UMA</div>
         <div class="sidebar-brand-version">Early Warning System v1.0</div>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("## 🔍 Filter Data")
+    st.markdown("## Filter Data")
 
     ticker_list = sorted(df["ticker"].unique())
 
@@ -490,15 +490,6 @@ with st.sidebar:
         min_value=min_date,
         max_value=max_date,
         help="Filter data berdasarkan periode waktu"
-    )
-
-    st.markdown("---")
-    st.markdown(
-        f"<div style='text-align:center; font-size:0.75rem; color:#A0A0B8;'>"
-        f"📈 Total <b>{len(ticker_list)}</b> saham tersedia<br>"
-        f"📅 Data: <b>{min_date}</b> — <b>{max_date}</b>"
-        f"</div>",
-        unsafe_allow_html=True
     )
 
 # Untuk menghindari error jika user hanya memilih satu tanggal
@@ -525,7 +516,7 @@ anomaly_df = stock_df[stock_df["is_anomaly"] == True].copy()
 # =========================
 st.markdown("""
 <div class="hero-container">
-    <div class="hero-badge">🛡️ Anomaly Detection System</div>
+    <div class="hero-badge"> Anomaly Detection System</div>
     <h1 class="hero-title">IDX UMA Early Warning System</h1>
     <p class="hero-subtitle">Unusual Market Activity Detection — Bursa Efek Indonesia</p>
     <p class="hero-description">
@@ -544,7 +535,7 @@ st.markdown("""
 # =========================
 st.markdown("""
 <div class="disclaimer-box">
-    <div class="disclaimer-title">⚠️ Disclaimer — Bukan Rekomendasi Investasi</div>
+    <div class="disclaimer-title">Disclaimer — Bukan Rekomendasi Investasi</div>
     <p class="disclaimer-text">
         Dashboard ini dibuat murni untuk <strong>tujuan edukasi dan riset</strong>. 
         Hasil deteksi anomali bukan merupakan rekomendasi untuk membeli, menjual, atau menahan saham tertentu. 
@@ -561,7 +552,7 @@ st.markdown("""
 # Jika data kosong
 # =========================
 if stock_df.empty:
-    st.warning("⚠️ Data tidak tersedia untuk filter yang dipilih.")
+    st.warning(" Data tidak tersedia untuk filter yang dipilih.")
     st.stop()
 
 
@@ -583,7 +574,7 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown(f"""
     <div class="kpi-card purple">
-        <div class="kpi-icon">🏷️</div>
+        <div class="kpi-icon"></div>
         <div class="kpi-label">Kode Saham</div>
         <div class="kpi-value purple">{selected_ticker}</div>
     </div>
@@ -592,7 +583,7 @@ with col1:
 with col2:
     st.markdown(f"""
     <div class="kpi-card teal">
-        <div class="kpi-icon">💰</div>
+        <div class="kpi-icon"></div>
         <div class="kpi-label">Harga Close Terakhir</div>
         <div class="kpi-value teal">Rp {latest_close:,.0f}</div>
     </div>
@@ -601,7 +592,7 @@ with col2:
 with col3:
     st.markdown(f"""
     <div class="kpi-card red">
-        <div class="kpi-icon">🚨</div>
+        <div class="kpi-icon"></div>
         <div class="kpi-label">Total Anomaly</div>
         <div class="kpi-value red">{total_anomaly}</div>
     </div>
@@ -610,7 +601,7 @@ with col3:
 with col4:
     st.markdown(f"""
     <div class="kpi-card gold">
-        <div class="kpi-icon">📅</div>
+        <div class="kpi-icon"></div>
         <div class="kpi-label">Anomaly Terakhir</div>
         <div class="kpi-value gold">{latest_anomaly_date}</div>
     </div>
@@ -622,7 +613,6 @@ with col4:
 # =========================
 st.markdown("""
 <div class="section-header">
-    <span class="section-header-icon">🕯️</span>
     <span class="section-header-text">Candlestick Chart dengan Titik Anomaly</span>
     <span class="section-header-badge">INTERACTIVE</span>
 </div>
@@ -660,7 +650,7 @@ fig_price.add_trace(
             symbol="diamond",
             line=dict(width=2, color="#E17055"),
         ),
-        name="⚠ Anomaly",
+        name=" Anomaly",
     )
 )
 
@@ -685,7 +675,6 @@ st.plotly_chart(fig_price, use_container_width=True)
 # =========================
 st.markdown("""
 <div class="section-header">
-    <span class="section-header-icon">📊</span>
     <span class="section-header-text">Volume Perdagangan</span>
 </div>
 """, unsafe_allow_html=True)
@@ -722,7 +711,7 @@ fig_volume.add_trace(
             symbol="diamond",
             line=dict(width=2, color="#E17055"),
         ),
-        name="⚠ Anomaly Volume",
+        name=" Anomaly Volume",
     )
 )
 
@@ -746,7 +735,7 @@ st.plotly_chart(fig_volume, use_container_width=True)
 # =========================
 st.markdown(f"""
 <div class="section-header">
-    <span class="section-header-icon">📋</span>
+    <span class="section-header-icon"></span>
     <span class="section-header-text">Daftar Tanggal Terdeteksi Anomaly — {selected_ticker}</span>
     <span class="section-header-badge">{total_anomaly} RECORDS</span>
 </div>
@@ -754,7 +743,7 @@ st.markdown(f"""
 
 if anomaly_df.empty:
     st.markdown("""
-    <div class="status-pill success">✅ Tidak ada anomaly terdeteksi pada saham dan rentang tanggal ini</div>
+    <div class="status-pill success"> Tidak ada anomaly terdeteksi pada saham dan rentang tanggal ini</div>
     """, unsafe_allow_html=True)
 else:
     anomaly_table = anomaly_df[
@@ -776,18 +765,18 @@ else:
     anomaly_table["price_range_pct"] = anomaly_table["price_range_pct"] * 100
 
     anomaly_table = anomaly_table.rename(columns={
-        "date": "📅 Date",
-        "ticker": "🏷️ Ticker",
-        "close": "💰 Close Price",
-        "volume": "📊 Volume",
-        "daily_return": "📈 Daily Return (%)",
-        "volume_spike_ratio": "⚡ Vol. Spike Ratio",
-        "price_range_pct": "📐 Price Range (%)",
-        "anomaly_score": "🎯 Anomaly Score",
-        "anomaly_reason": "📝 Anomaly Reason"
+        "date": " Date",
+        "ticker": " Ticker",
+        "close": " Close Price",
+        "volume": " Volume",
+        "daily_return": " Daily Return (%)",
+        "volume_spike_ratio": " Vol. Spike Ratio",
+        "price_range_pct": " Price Range (%)",
+        "anomaly_score": " Anomaly Score",
+        "anomaly_reason": " Anomaly Reason"
     })
 
-    anomaly_table = anomaly_table.sort_values("🎯 Anomaly Score", ascending=False)
+    anomaly_table = anomaly_table.sort_values(" Anomaly Score", ascending=False)
 
     st.dataframe(
         anomaly_table,
@@ -801,7 +790,6 @@ else:
 # =========================
 st.markdown("""
 <div class="section-header">
-    <span class="section-header-icon">🏆</span>
     <span class="section-header-text">Top 10 Anomaly dari Seluruh Saham</span>
     <span class="section-header-badge">ALL TICKERS</span>
 </div>
@@ -827,14 +815,14 @@ top_all_table["date"] = top_all_table["date"].dt.date
 top_all_table["daily_return"] = top_all_table["daily_return"] * 100
 
 top_all_table = top_all_table.rename(columns={
-    "date": "📅 Date",
-    "ticker": "🏷️ Ticker",
-    "close": "💰 Close Price",
-    "volume": "📊 Volume",
-    "daily_return": "📈 Daily Return (%)",
-    "volume_spike_ratio": "⚡ Vol. Spike Ratio",
-    "anomaly_score": "🎯 Anomaly Score",
-    "anomaly_reason": "📝 Anomaly Reason"
+    "date": " Date",
+    "ticker": " Ticker",
+    "close": " Close Price",
+    "volume": " Volume",
+    "daily_return": " Daily Return (%)",
+    "volume_spike_ratio": " Vol. Spike Ratio",
+    "anomaly_score": " Anomaly Score",
+    "anomaly_reason": " Anomaly Reason"
 })
 
 st.dataframe(
@@ -849,14 +837,13 @@ st.dataframe(
 # =========================
 st.markdown("""
 <div class="section-header">
-    <span class="section-header-icon">⚙️</span>
     <span class="section-header-text">Bagaimana Sistem Ini Bekerja</span>
 </div>
 """, unsafe_allow_html=True)
 
 st.markdown("""
 <div class="info-box">
-    <h4>📐 Fitur yang Digunakan untuk Deteksi Anomali</h4>
+    <h4> Fitur yang Digunakan untuk Deteksi Anomali</h4>
     <div class="feature-grid">
         <div class="feature-item">
             <div class="feature-dot"></div>
@@ -916,7 +903,7 @@ st.markdown("""
         </div>
     </div>
     <div class="model-box">
-        <div class="model-box-title">🤖 Model: Isolation Forest</div>
+        <div class="model-box-title"> Model: Isolation Forest</div>
         <div class="model-box-text">
             Model yang digunakan adalah <strong>Isolation Forest</strong>, yaitu algoritma unsupervised learning
             yang mendeteksi data yang berbeda dari pola normal. Algoritma ini bekerja dengan cara mengisolasi
